@@ -1,6 +1,6 @@
 {
 	"Angular Component": {
-		"prefix": "a2component",
+		"prefix": "ngcomponent",
 		"body": [
 			"import { Component, OnInit } from '@angular/core';",
 			"",
@@ -18,7 +18,7 @@
 		]
 	},
 	"Angular Service": {
-		"prefix": "a2service",
+		"prefix": "ngservice",
 		"body": [
 			"import { Injectable } from '@angular/core';",
 			"",
@@ -28,15 +28,33 @@
 			"}"
 		]
 	},
-	"Angular HTTP": {
-		"prefix": "a2http",
+	"Angular GET": {
+		"prefix": "ngget",
 		"body": [
-			"return this.http.${1:get}('${2:url}')",
-				"\t.map((response: Response) => response.json());"
+			"return this.http.get('${1:url}')",
+				"\t.map((response: Response) => {",
+					"\t\treturn response.json();",
+					"\t\t// let json = response.json();",
+					"\t\t// return json.success || false;",
+				"\t});"
 		]
 	},
+	"Angular POST": {
+		"prefix": "ngpost",
+		"body": [
+			"let data = {",
+			"\t$0",
+			"}",
+			"",
+			"return this.http.post('${1:url}', data)",
+				"\t.map((response: Response) => {",
+					"\t\tlet json = response.json();",
+					"\t\treturn json.success || false;",
+				"\t});"
+		]
+	},	
 	"Angular Module": {
-		"prefix": "a2module",
+		"prefix": "ngmodule",
 		"body": [
 			"import { NgModule } from '@angular/core';",
 			"import { CommonModule } from '@angular/common';",
@@ -54,7 +72,7 @@
 		]
 	},
 	"Angular Pipe": {
-		"prefix": "a2pipe",
+		"prefix": "ngpipe",
 		"body": [
 			"import { Pipe, PipeTransform } from '@angular/core';",
 			"",
