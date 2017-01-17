@@ -68,7 +68,7 @@
 				"\t],",
 				"\tproviders: [],",
 			"})",
-			"export class ${1:PascalCase}Module {}"
+			"export class ${1:PascalCase}Module { }"
 		]
 	},
 	"Angular Pipe": {
