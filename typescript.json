@@ -1,6 +1,6 @@
 {
 	"Angular Component": {
-		"prefix": "a2comp",
+		"prefix": "a2component",
 		"body": [
 			"import { Component, OnInit } from '@angular/core';",
 			"",
@@ -9,10 +9,61 @@
 				"\tstyleUrls: ['./${1:kebab-case}.component.scss']",
 			"})",
 			"export class ${2:PascalCase}Component implements OnInit {",
-				"\tconstructor() { }",
+				"\tconstructor() {$0}",
 				"",
 				"\tngOnInit() {",
 					"\t\tconsole.log('${2:PascalCase}Component loaded.');",
+				"\t}",
+			"}"
+		]
+	},
+	"Angular Service": {
+		"prefix": "a2service",
+		"body": [
+			"import { Injectable } from '@angular/core';",
+			"",
+			"@Injectable()",
+			"export class ${1:PascalCase}Service {",
+				"\tconstructor() {$0}",
+			"}"
+		]
+	},
+	"Angular HTTP": {
+		"prefix": "a2http",
+		"body": [
+			"return this.http.${1:get}('${2:url}')",
+				"\t.map((response: Response) => response.json());"
+		]
+	},
+	"Angular Module": {
+		"prefix": "a2module",
+		"body": [
+			"import { NgModule } from '@angular/core';",
+			"import { CommonModule } from '@angular/common';",
+			"",
+			"import { ${1:PascalCase}Component } from './${2:snake-case}.component';",
+			"",
+			"@NgModule({",
+				"\timports: [],",
+				"\tdeclarations: [",
+					"\t\t${1:PascalCase}Component",
+				"\t],",
+				"\tproviders: [],",
+			"})",
+			"export class ${1:PascalCase}Module {}"
+		]
+	},
+	"Angular Pipe": {
+		"prefix": "a2pipe",
+		"body": [
+			"import { Pipe, PipeTransform } from '@angular/core';",
+			"",
+			"@Pipe({",
+				"\tname: '${1:camelCaseWithoutPipeSuffix}'",
+			"})",
+			"export class ${2:PascalCase}Pipe implements PipeTransform {",
+				"\ttransform(value: any, args: any[]): any {",
+					"\t\t$0",
 				"\t}",
 			"}"
 		]
